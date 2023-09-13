@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" href="./favicon.ico" />
+<meta name="theme-color" content="#cf23cf" />
+
+<title>Model Grapix is Under Maintenace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap" rel="stylesheet">
+
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  /* 
+  cf23a4b4
+  a83ce7bc
+  ffbfb2
+  */
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+  }
+
+  main {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #ffe1ed;
+  }
+
+  main > #content {
+    position: relative;
+    height: 30em;
+    width: 30em;
+    border-radius: 50%;
+    background: #cf23cf;
+    text-align: center;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    z-index: 200;
+  }
+  
+  @media (max-width: 550px) {
+    main > #content {
+      height: 100%;
+      width: 100%;
+      border-radius: 0;
+      background: #cf23cfb7;
+    }
+  }
+
+  main > #content > h2 {
+    margin-top: 30px;
+    color: #FFFFFF;
+    font-size: 30px;
+  }
+
+  main > #content > p {
+    margin-bottom: 50px;
+    color: #ffcade;
+  }
+
+  main > #content > span {
+    background: #FFFFFFAA;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    padding: 20px;
+  }
+
+  main > #content > span > img {
+    width: 200px;
+    margin-top: 50px;
+  }
+
+  /*  */
+
+  /* Styles for the different shapes */
+  .shape {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      transform: scale(0);
+      animation: breatheAnimation 2s infinite alternate, moveAnimation 3s infinite alternate;
+    }
+    
+    /* Define additional styles for different shapes */
+    .circle {
+      border-radius: 50%;
+      background-color: #cf23a434;
+    }
+    
+    .square {
+      border-radius: 0;
+      background-color: #a83ce738;
+    }
+
+    .triangle {
+      width: 0;
+      height: 0;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 100px solid #ffbfb224;
+    }
+
+    /* Breathing animation */
+    @keyframes breatheAnimation {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.1);
+      }
+    }
+
+    /* Random movement animation */
+    @keyframes moveAnimation {
+      0% {
+        transform: translate(0, 0) scale(0.5);
+      }
+      100% {
+        transform: translate(calc(10px - 20px * var(--rand-x)), calc(10px - 20px * var(--rand-y))) scale(1.1);
+      }
+    }
+
+</style>
+
+</head>
+<body>
+
+<main>
+  <div id="content">
+    <span><img src="./20230125_072534.png" alt=""></span>
+    <h2>Model Grapix is <br /> Under Maintenance</h2>
+    <p>We're enhancing our services for you.</p>
+    <img src="./connection_icon.png" alt="" />
+  </div>
+
+</main>
+  
+<!-- JavaScript will generate random shapes and positions -->
+<script>
+  function getRandomPosition(maxWidth, maxHeight) {
+      const x = Math.floor(Math.random() * (maxWidth - 50));
+      const y = Math.floor(Math.random() * (maxHeight - 50));
+      return { x, y };
+    }
+
+    // Array of different shape classes
+    const shapeClasses = ['circle', 'square', 'triangle'];
+
+    // Generate and display 100 random shapes with different shapes on page load
+    window.addEventListener('load', () => {
+      const maxWidth = window.innerWidth - 50;
+      const maxHeight = window.innerHeight - 50;
+
+      for (let i = 0; i < 50; i++) {
+        const randomPosition = getRandomPosition(maxWidth, maxHeight);
+        const randomShapeClass = shapeClasses[Math.floor(Math.random() * shapeClasses.length)];
+
+        const element = document.createElement('div');
+        element.className = `shape ${randomShapeClass}`;
+        element.style.left = `${randomPosition.x}px`;
+        element.style.top = `${randomPosition.y}px`;
+        element.style.animationDelay = `${Math.random() * 5}s`; // Random delay between 0s and 5s
+        element.style.setProperty('--rand-x', Math.random());
+        element.style.setProperty('--rand-y', Math.random());
+
+        document.body.appendChild(element);
+      }
+    });
+</script>
+
+</body>
+</html>
