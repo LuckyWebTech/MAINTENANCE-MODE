@@ -31,7 +31,8 @@
 
   main {
     height: 100vh;
-    width: 100%;
+    max-width: 1900px;
+    margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,10 +42,9 @@
 
   main > #content {
     position: relative;
-    height: 30em;
-    width: 30em;
-    border-radius: 50%;
-    background: #cf23cf;
+    height: 100%;
+    width: 100%;
+    background: #cf23cfa1;
     text-align: center;
     
     display: flex;
@@ -54,24 +54,30 @@
     z-index: 200;
   }
   
-  @media (max-width: 550px) {
-    main > #content {
-      height: 100%;
-      width: 100%;
-      border-radius: 0;
-      background: #cf23cfb7;
-    }
-  }
-
   main > #content > h2 {
     margin-top: 30px;
     color: #FFFFFF;
-    font-size: 30px;
+    font-size: 50px;
+    padding: 0 20px;
+  }
+
+  @media (max-width: 550px) {
+    main > #content > h2 {
+      font-size: 30px;
+      margin-top: 70px;
+      margin-bottom: 10px;
+    }
   }
 
   main > #content > p {
     margin-bottom: 50px;
-    color: #ffcade;
+    color: rgb(255, 212, 221);
+    font-size: 20px;
+    padding: 0 20px;
+  }
+
+  main > #content > img {
+    width: 2000px;
   }
 
   main > #content > span {
@@ -79,6 +85,12 @@
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
     padding: 20px;
+  }
+  
+  @media (max-width: 550px) {
+    main > #content > span {
+      background: #ffffffc6;
+    }
   }
 
   main > #content > span > img {
@@ -94,7 +106,7 @@
       height: 50px;
       position: absolute;
       transform: scale(0);
-      animation: breatheAnimation 2s infinite alternate, moveAnimation 3s infinite alternate;
+      animation: breatheAnimation 2s infinite alternate;
     }
     
     /* Define additional styles for different shapes */
@@ -119,16 +131,6 @@
     /* Breathing animation */
     @keyframes breatheAnimation {
       0% {
-        transform: scale(1);
-      }
-      100% {
-        transform: scale(1.1);
-      }
-    }
-
-    /* Random movement animation */
-    @keyframes moveAnimation {
-      0% {
         transform: translate(0, 0) scale(0.5);
       }
       100% {
@@ -146,7 +148,7 @@
     <span><img src="./20230125_072534.png" alt=""></span>
     <h2>Model Grapix is <br /> Under Maintenance</h2>
     <p>We're enhancing our services for you.</p>
-    <img src="./connection_icon.png" alt="" />
+    <img src="./connection_icon_1.png" alt="" />
   </div>
 
 </main>
